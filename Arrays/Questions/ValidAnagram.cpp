@@ -41,18 +41,41 @@ class Solution {
             
             return isAnagram;
         }
+
+        bool isAnagram2(string s, string t) {
+          unordered_map<char, int> charCount;
+
+          if(s.length() != t.length()){
+            return false;
+          }
+
+          for(char c: s) charCount[c]++;
+          for(char c: t) charCount[c]--;
+
+          for(auto& pair: charCount ){
+            if(pair.second != 0){
+                return false;
+            
+            }
+
+          }
+           
+            
+            return true;
+    }
 };
+
 
 
 int main(){
 
     string s = "cat";
-    string t = "tau";
+    string t = "atc";
 
 
     Solution solution;
-    bool result = solution.isAnagram(s, t);
-    cout << "Is \"" << s << "\" an anagram of \"" << t << "\": " << (result ? "Yes" : "No") << endl;
+    bool result = solution.isAnagram2(s, t);
+    cout << "Is \"" << s << "\" an bumble of \"" << t << "\": " << (result ? "Yes" : "No") << endl;
 
     return 0;
 }
